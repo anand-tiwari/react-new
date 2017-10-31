@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TextDisplay from './TextDisplay';
 
 class TextInput extends Component {
 
@@ -8,13 +9,24 @@ class TextInput extends Component {
       	inputText:'initial text'
       }
     }
+
+    handleChange(event) {
+    	this.setState({
+    		inputText:event.target.value
+    	})
+    }
+
     render(){
       return (
-      	<input 
-      		type="text"
-      		placeholder="This is the going to be text"
-      		value={this.state.inputText} 
-      	/>
+      	<div>
+	      	<input 
+	      		type="text"
+	      		placeholder="This is the going to be text"
+	      		value={this.state.inputText}
+	      		onChange={this.handleChange.bind(this)} 
+	      	/>
+	      	<TextDisplay text={this.state.inputText}/>
+	    </div>
       )
     }
 }
